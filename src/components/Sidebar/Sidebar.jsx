@@ -2,6 +2,8 @@ import React from 'react'
 import { assets } from '../../assets/assets'
 import './Sidebar.css'
 const Sidebar = () => {
+	const [extended, setExtended] = React.useState(false)
+
 	return (
 		<div className='sidebar'>
 			<div className='top'>
