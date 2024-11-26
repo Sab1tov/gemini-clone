@@ -26,15 +26,16 @@ const ContextProvider = props => {
 		setResultData('')
 		setLoading(true)
 		setShowResult(true)
-		let response
-		if (prompt !== undefined) {
-			response = await run(prompt)
-			setRecentPrompt(prompt)
-		} else {
+
+		let textToSend = prompt || input
+		if (!prompt) {
 			setPrevPrompts(prev => [...prev, input])
-			setRecentPrompt(input)
-			response = await run(input)
+		} else {
+			setPrevPrompts(prev => [...prev, prompt])
 		}
+		setRecentPrompt(textToSend)
+
+		const response = await run(textToSend)
 
 		let responseArray = response.split('**')
 		let newResponse = ''
@@ -54,6 +55,7 @@ const ContextProvider = props => {
 		setLoading(false)
 		setInput('')
 	}
+
 	const contextValue = {
 		prevPrompts,
 		setPrevPrompts,
