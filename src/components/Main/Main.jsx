@@ -101,7 +101,14 @@ const Main = () => {
 									<p>Brainstorm team bonding activities for our work retreat</p>
 									<img src={assets.message_icon} alt='' />
 								</div>
-								<div className='card'>
+								<div
+									className='card'
+									onClick={() =>
+										handleCardClick(
+											'Improve the readability of the following code'
+										)
+									}
+								>
 									<p>Improve the readability of the following code</p>
 									<img src={assets.code_icon} alt='' />
 								</div>
